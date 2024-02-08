@@ -1,0 +1,219 @@
+// exemplo 1: ler e escrever o nome
+
+import 'dart:io';
+
+void void() {
+	// Solicita que o usuário insira um nome
+	stdout.write('Por favor, insira seu nome: ');
+
+	// Lê a entrada do teclado e remove espaços em branco no início e no final
+	String nome = stdin.readLineSync()?.trim() ?? '';
+
+	// Escreve o nome no console
+	print('Olá, $nome!');
+}
+
+
+// exemplo 2: ler 2 valores e fazer as 4 operações aritméticas
+
+void main() { 
+
+	// modelo simples para exemplo de calculadora 
+
+	stdout.write('Informe seu none ');
+	String nome = stdin.readLineSync()?.trim() ?? 'Nome em branco';
+	
+	stdout.write('Valor 1: ');
+	// Lê a entrada do teclado e remove espaços em branco no início e no final
+	String? input = stdin.readLineSync()?.trim();
+
+	// Verifica se a entrada não é nula ou vazia antes de tentar converter para inteiro
+	int v1 = input != null && input.isNotEmpty ? int.parse(input) : 0;
+
+
+	stdout.write('Valor 2: ');
+	input = stdin.readLineSync()?.trim();
+	int v2 = input != null && input.isNotEmpty ? int.parse(input) : 0;
+
+	int soma = v1 + v2; 
+	int subtracao = v1 - v2; 
+	int multiplicacao = v1 * v2; 
+	double divisao = v1 / v2; 
+
+
+	print('Nome: $nome');
+	print('Soma: $soma'); 
+	print('Subtração: $subtracao'); 
+	print('Multiplicação: $multiplicacao'); 
+	print('Divisão: $divisao'); 
+} 
+
+// exemplo 3: ler 4 notas e imprimir a verificar se aluno aprovado ou reprovado
+
+import 'dart:io';
+
+void main() { 
+	String? input;
+  double n1,n2,n3,n4,media;
+
+	stdout.write('Nota 1: ');
+	input = stdin.readLineSync()?.trim();
+	n1 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+	stdout.write('Nota 2: ');
+	input = stdin.readLineSync()?.trim();
+	n2 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+	stdout.write('Nota 3: ');
+	input = stdin.readLineSync()?.trim();
+	n3 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+	stdout.write('Nota 4: ');
+	input = stdin.readLineSync()?.trim();
+	n4 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+	media = (n1+n2+n3+n4)/4;
+	if (media>=6) {
+		stdout.write('Aprovado S2');
+	} else {
+		stdout.write('Reprovado :(');
+	}
+} 
+
+// exemplo 4: ler 10 notas e mostrar a soma e a média das notas com While
+
+import 'dart:io';
+
+void main() {
+  List<double> notas = [];
+  double soma = 0;
+  int contador = 0;
+
+  while (contador < 10) {
+    stdout.write('Nota do aluno ${contador + 1}: ');
+    String? input = stdin.readLineSync()?.trim();
+    double nota = input != null && input.isNotEmpty ? double.parse(input) : 0;
+    notas.add(nota);
+    soma += nota;
+    contador++;
+  }
+
+  double mediaTurma = soma / notas.length;
+
+  print('Média da turma: $mediaTurma');
+  print('Soma de todas as notas: $soma');
+}
+
+// exemplo 5: o mesmo acima, usando estrutura for e listas
+
+import 'dart:io';
+
+void main() {
+  List<double> notas = [];
+  double soma = 0;
+
+  for (int i = 0; i < 10; i++) {
+    stdout.write('Nota do aluno ${i + 1}: ');
+    String? input = stdin.readLineSync()?.trim();
+    double nota = input != null && input.isNotEmpty ? double.parse(input) : 0;
+    notas.add(nota);
+    soma += nota;
+  }
+
+  double mediaTurma = soma / notas.length;
+
+  print('Média da turma: $mediaTurma');
+  print('Soma de todas as notas: $soma');
+}
+
+// exemplo 5: Listas de nomes
+
+void main() {
+	// Lista de nomes
+	List<String> nomes = ["João", "Maria", "Pedro", "Ana", "Carlos"];
+
+	// Print da lista de nomes
+	print("Lista de nomes:");
+	print(nomes);
+
+	// Iteração da lista e print de cada nome em maiúsculo
+	print("\nNomes em maiúsculo:");
+	for (String nome in nomes) {
+		print(nome.toUpperCase());
+	}
+}
+
+// exemplo 6: exemplo de mapas em Dart com DDD
+
+void main() {
+	// Preenchendo o mapa de DDDs
+	Map<int, String> ddds = {
+		11: "São Paulo",
+		21: "Rio de Janeiro",
+		31: "Belo Horizonte",
+		41: "Curitiba",
+		51: "Porto Alegre"
+	};
+
+	// Chama a função para imprimir o valor da cidade para um determinado DDD
+	imprimirCidadeDoDDD(11, ddds);
+	imprimirCidadeDoDDD(21, ddds);
+	imprimirCidadeDoDDD(31, ddds);
+	imprimirCidadeDoDDD(41, ddds);
+	imprimirCidadeDoDDD(51, ddds);
+}
+
+void imprimirCidadeDoDDD(int ddd, Map<int, String> ddds) {
+	// Verifica se o DDD está no mapa
+	if (ddds.containsKey(ddd)) {
+		// Imprime a cidade associada ao DDD
+		print("O DDD $ddd corresponde à cidade de ${ddds[ddd]}.");
+	} else {
+		// Imprime uma mensagem se o DDD não estiver no mapa
+		print("DDD não encontrado para $ddd.");
+	}
+}
+
+
+// exemplo 7: Uso de JSON no dart, exemplo com dados cadastrais
+
+import 'dart:convert';
+
+void main() {
+	// Criando estrutura JSON com dados do aluno
+	String dadosAlunoJson = '''
+		{
+			"nome": "João Silva",
+			"nascimento": "2000-05-15",
+			"tamanho": 175,
+			"endereco": {
+				"rua": "Rua das Flores",
+				"numero": 123,
+				"bairro": "Centro",
+				"cidade": "São Paulo"
+			}
+		}
+	''';
+
+	// Convertendo o JSON para um mapa (Map<String, dynamic>)
+	Map<String, dynamic> dadosAluno = jsonDecode(dadosAlunoJson);
+
+	// Capturando e imprimindo os dados do aluno
+	String nome = dadosAluno['nome'];
+	String nascimento = dadosAluno['nascimento'];
+	int tamanho = dadosAluno['tamanho'];
+	Map<String, dynamic> endereco = dadosAluno['endereco'];
+	String rua = endereco['rua'];
+	int numero = endereco['numero'];
+	String bairro = endereco['bairro'];
+	String cidade = endereco['cidade'];
+
+	// Imprimindo os dados do aluno
+	print("Nome: $nome");
+	print("Data de Nascimento: $nascimento");
+	print("Tamanho: $tamanho");
+	print("Endereço:");
+	print("Rua: $rua, $numero");
+	print("Bairro: $bairro");
+	print("Cidade: $cidade");
+}
