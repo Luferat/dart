@@ -1,0 +1,179 @@
+// 1. Tipos básicos de Variáveis e Concatenação
+
+void main() {
+  // Produtos
+
+  // definindo variáveis pela tipagem
+  int codigo = 1;
+  String nome = 'Pendrive';
+  double preco = 50.14;
+  bool venda = true;
+
+  // declaração com a clausula var
+  var quantidade = 1;
+
+  // declaração com dynamic (não é a melhor forma de programação)
+  dynamic fornecedor = 1;
+  fornecedor = 'Flutter';
+
+  // print com concatenação
+  print('Código: $codigo');
+  print('Descrição: ${nome + ' - Kingston'}');
+  print ('Preço($nome) : ${preco * 1.2}');
+  print(venda);
+  // concatenar com conversão de valores
+  print('Quantidade : '+ quantidade.toString());
+  print('Produto de código '+ codigo.toString() +' é '+ nome + 
+        ' e o preço é: ' + (preco * 1.1).toString());
+  print(fornecedor);
+}
+
+
+// 2. Operadores aritméticos com métodos de retorno
+
+// variável para uso de todos os métodos
+int res = 0;
+
+void main() {
+  
+  int numero1 = 5;
+  int numero2 = 2;
+  
+  print ('Soma = ${soma(numero1, numero2)}');
+  print ('Subtração = ${subt(numero1, numero2)}');
+  print ('Multiplicação = ${mult(numero1, numero2)}');
+  print ('Divisão = ${div(numero1, numero2)}');
+  print ('Divisão Parte Inteira = ${divPartInt(numero1, numero2)}');
+  print ('Resto da Divisão = ${restoDiv(numero1, numero2)}');
+   
+}
+
+int soma(int v1, int v2){
+  res = v1+v2;
+  return res; 
+}
+
+int subt(int v1, int v2){
+  return v1 - v2; 
+}
+
+int mult(int v1, int v2){
+  return v1 * v2; 
+}
+
+double div(int v1, int v2){
+  return v1 / v2; 
+}
+
+int divPartInt(int v1, int v2){
+  return v1 ~/ v2; 
+}
+
+int restoDiv(int v1, int v2){
+  return v1 % v2; 
+}
+
+
+// 3. Operadores de atribuição
+
+void main() {
+  
+  int numero = 0;
+  numero += 1;
+  print (numero);
+  numero ++;
+  print(numero);
+  
+  for (int i = 0; i < 5; i++) {
+    print('Elevador Sobe ${i + 1}');
+  }
+  
+  for (int i = 5; i > 0; i--) {
+    print('Elevador Desce ${i - 1}');
+  }
+  
+  for (int i = 1; i <= 3; i *= 2) {
+    print('Elevador Pula ${i * 2}');
+  }
+}
+
+// 4. Estrutura if..else
+
+void main() {
+ 
+  String clima = "Chuva";
+  int temperatura = 20;
+  
+  // || Or
+  if (clima == 'Sol' || temperatura >15){
+    print('Vou sair de casa');
+  } else {
+    print('Não vou sair de casa');
+  }
+  
+  // && And
+  if (clima == 'Sol' && temperatura >15){
+    print('Vou sair de casa');
+  } else {
+    print('Não vou sair de casa');
+  }
+  
+  // ! Not
+  
+  if (!(clima == 'Sol' && temperatura >15)){
+    print('Vou sair de casa');
+  } else {
+    print('Não vou sair de casa');
+  }
+}
+
+
+// 5. Operador ternário
+
+void main() {
+  bool condicao = true;
+  String aula = "Dart";
+  String clima = "Sol";
+  
+  print (condicao ? 'Condição Verdadeira':'Condição Falsa');
+ 
+  print(2==3 ? 'Maior':'Menor ou Igual');
+  
+  print(aula == "Dart" ? 'Aula ok!' : 'Aula errada' );
+  
+  // variável para receber o resultado do operador ternário
+  String uc = aula == 'Flutter' ? 'Aula ok' : 'Aula bugada';
+  print ( uc );
+  
+  String mensagem = clima == 'Sol' ? 'Lindo dia quente':'Dia sem Sol';
+  print ( mensagem );
+  
+  int numero = 1;
+  numero >= 0 ? numero++ : numero--;
+  print ( numero );
+}
+
+
+// 6. switch case e break
+
+void main() {
+  String tela = 'Home';
+  
+  switch( tela ){
+    case 'Home' :
+      print('Página inicial');
+      break;
+    
+    case 'SplashScreen' :
+      print('Splash Screen');
+      break;
+      
+    default:
+      print('Tela');
+      break;
+  } 
+}
+
+
+
+
