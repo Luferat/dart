@@ -8,7 +8,7 @@ void main() {
   String nome = 'Pendrive';
   double preco = 50.14;
   bool venda = true;
-
+  String? vendedor; // uma ? significa aceita nullo
   // declaração com a clausula var
   var quantidade = 1;
 
@@ -26,12 +26,19 @@ void main() {
   print('Produto de código '+ codigo.toString() +' é '+ nome + 
         ' e o preço é: ' + (preco * 1.1).toString());
   print(fornecedor);
+  //vendedor = 'Jorge';
+  print(vendedor);
+  
+  // abaixo, ?? passa um valor caso nulo
+  String? funcionario = vendedor?? ' não informado'; 
+
+  print('Funcionário(a) :' + funcionario);
 }
 
 
-// 2. Operadores aritméticos com métodos de retorno
+// 2. Operadores aritméticos com funções de retorno
 
-// variável para uso de todos os métodos
+// variável para uso de todos as funções
 int res = 0;
 
 void main() {
@@ -45,6 +52,7 @@ void main() {
   print ('Divisão = ${div(numero1, numero2)}');
   print ('Divisão Parte Inteira = ${divPartInt(numero1, numero2)}');
   print ('Resto da Divisão = ${restoDiv(numero1, numero2)}');
+  print ('Número Par? ${ePar(numero1, numero2)}');
    
 }
 
@@ -72,6 +80,12 @@ int divPartInt(int v1, int v2){
 int restoDiv(int v1, int v2){
   return v1 % v2; 
 }
+
+bool ePar(int v1, int v2){
+  if (v1 % v2 == 0) return true;
+  else return false;
+}
+
 
 
 // 3. Operadores de atribuição
@@ -174,7 +188,7 @@ void main() {
   } 
 }
 
-// 7. estrutura de repetição for, while, do while
+// 7. estrutura de repetição for, while, do while, for each
 void main() {
   
   int j = 0;
@@ -206,7 +220,17 @@ void main() {
   do {
     print('Conteúdo de x: '+x.toString());
     x--;
-  } while (x<10);
+  } while (x<5);
+
+ print('**__**');
+ // for each 
+ List<String> cidades = ['Nova Iguaçu','Mesquita',
+             'Nilópolis','Duque de Caxias','São João de Meriti',
+             'Queimados','Rio de Janeiro','Petrópolis'];
+ 
+ for (String cidade in cidades){
+   print(cidade);
+ }
 
 }
 
