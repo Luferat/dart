@@ -234,6 +234,109 @@ void main() {
 
 }
 
+// 8. Tratando um pouco mais de funções
+
+// 8.1 >> chamando função dentro de outra função
+void main() {
+ saudacoes();
+}
+
+void saudacoes(){
+  print ('Seja bem-vindo(a)');
+  print(agora()); 
+}
+
+String agora(){
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+
+// 8.2 >> passagem de parâmetros posicionais obrigatórios
+void main() {
+  saudacoes('Elias',true);
+}
+
+void saudacoes(String nome, bool mostrarAgora) {
+  print('Seja bem-vindo(a) $nome');
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 8.3.1 >> passagem de parâmetro posicional opcional
+void main() { 
+  saudacoes('Elias');
+}
+
+/* [] colchetes definem parametro opcional
+ * um valor default precisa ser alimentado
+ */
+void saudacoes(String nome, [bool mostrarAgora = true]) {
+  print('Seja bem-vindo(a) $nome');
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 8.3.2 >> passagem de parâmetro posicional opcional
+void main() { 
+  saudacoes('Elias');
+  saudacoes('Elias',true,'*');
+  saudacoes('Elias',false);
+}
+
+/* [] colchetes definem parametro opcional
+ * um valor default precisa ser alimentado
+ */
+void saudacoes(String nome, [bool mostrarAgora = true, String sep = '-']) {
+  print(sep * 30);
+  print('Seja bem-vindo(a) $nome');
+  if (mostrarAgora) {
+    print(agora());
+  }
+  print(sep * 30);
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 8.3.3 >> passagem de parâmetro opcionais nomeados
+void main() { 
+  saudacoes('Elias');
+  saudacoes('Elias',mostrarAgora:false);
+  saudacoes('Elias',sep: '=-');
+}
+
+/* {} chaves definem parametro nomeado
+ */
+void saudacoes(String nome, {bool mostrarAgora = true, String sep = '-'}) {
+  print(sep * 30);
+  print('Seja bem-vindo(a) $nome');
+  if (mostrarAgora) {
+    print(agora());
+  }
+  print(sep * 30);
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+
 
 
 
