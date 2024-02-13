@@ -1,0 +1,130 @@
+/*
+ * O site dart.dev tirou o suporte da classe de entrada de dados (import 'dart:io';)
+ * Assim, um dos recursos para teste dos códigos abaixo como sugestão é o replit.cm 
+ */
+
+// exemplo 1: ler e escrever o nome
+
+import 'dart:io';
+
+void main() {
+  // Solicita que o usuário insira um nome
+  stdout.write('Por favor, insira seu nome: ');
+
+  // Lê a entrada do teclado e remove espaços em branco no início e no final
+  String nome = stdin.readLineSync()?.trim() ?? '';
+  // ou
+  //String? nome = stdin.readLineSync();
+
+  // Escreve o nome no console
+  print('Olá, $nome!');
+}
+
+// exemplo 2: ler 2 valores e fazer as 4 operações aritméticas
+
+import 'dart:io';
+void main() { 
+
+  // modelo simples para exemplo de calculadora 
+
+  stdout.write('Valor 1: ');
+  // Lê a entrada do teclado e remove espaços em branco no início e no final
+  String? input = stdin.readLineSync()?.trim();
+  // Verifica se a entrada não é nula ou vazia antes de tentar converter para inteiro
+  int v1 = input != null && input.isNotEmpty ? int.parse(input) : 0;
+
+  stdout.write('Valor 2: ');
+  input = stdin.readLineSync()?.trim();
+  int v2 = input != null && input.isNotEmpty ? int.parse(input) : 0;
+
+  int soma = v1 + v2; 
+  int subtracao = v1 - v2; 
+  int multiplicacao = v1 * v2; 
+  double divisao = v1 / v2; 
+  
+  print('Soma: $soma'); 
+  print('Subtração: $subtracao'); 
+  print('Multiplicação: $multiplicacao'); 
+  print('Divisão: $divisao'); 
+} 
+
+// exemplo 3: ler 4 notas, verificar se aluno aprovado ou reprovado e imprimir
+
+import 'dart:io';
+
+void main() { 
+  String? input;
+  double n1,n2,n3,n4,media;
+
+  stdout.write('Nota 1: ');
+  input = stdin.readLineSync()?.trim();
+  n1 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+  stdout.write('Nota 2: ');
+  input = stdin.readLineSync()?.trim();
+  n2 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+  stdout.write('Nota 3: ');
+  input = stdin.readLineSync()?.trim();
+  n3 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+  stdout.write('Nota 4: ');
+  input = stdin.readLineSync()?.trim();
+  n4 = input != null && input.isNotEmpty ? double.parse(input) : 0;
+
+  media = (n1+n2+n3+n4)/4;
+  if (media>=6) {
+    stdout.write('Aprovado S2');
+  } else {
+    stdout.write('Reprovado :(');
+  }
+} 
+
+// exemplo 4: ler 10 notas e mostrar a soma e a média das notas com While
+
+import 'dart:io';
+
+void main() {
+  List<double> notas = [];
+  double soma = 0;
+  int contador = 0;
+
+  while (contador < 10) {
+    stdout.write('Nota do aluno ${contador + 1}: ');
+    String? input = stdin.readLineSync()?.trim();
+    double nota = input != null && input.isNotEmpty ? double.parse(input) : 0;
+    notas.add(nota);
+    soma += nota;
+    contador++;
+  }
+
+  double mediaTurma = soma / notas.length;
+
+  print('Média da turma: $mediaTurma');
+  //print('Média da turma: ${mediaTurma.toStringAsFixed(2)}'); // Formatando com duas casas decimais
+
+  print('Soma de todas as notas: $soma');
+}
+
+// exemplo 5: o mesmo acima, usando estrutura for e listas
+
+import 'dart:io';
+
+void main() {
+  List<double> notas = [];
+  double soma = 0;
+
+  for (int i = 0; i < 10; i++) {
+    stdout.write('Nota do aluno ${i + 1}: ');
+    String? input = stdin.readLineSync()?.trim();
+    double nota = input != null && input.isNotEmpty ? double.parse(input) : 0;
+    notas.add(nota);
+    soma += nota;
+  }
+
+  double mediaTurma = soma / notas.length;
+
+  print('Média da turma: $mediaTurma');
+  print('Soma de todas as notas: $soma');
+}
+
