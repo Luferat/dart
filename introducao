@@ -580,6 +580,24 @@ void main() {
 	print("Cidade: $cidade");
 }
 
+// 13. >> Exemplo do uso de classe
+
+void main() {
+  final pessoa = Pessoa(nome: 'Marcos', idade:30);
+  print(pessoa.toString());
+}
+
+class Pessoa {
+  String? nome;
+  int? idade;
+  
+  Pessoa({this.nome, this.idade});
+  
+  String toString(){
+    return 'Pessoa(nome: $nome, idade: $idade)';
+  }
+}
+
 
 
 
