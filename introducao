@@ -1,3 +1,25 @@
+/*
+ 
+ Dart é uma Linguagem de Script voltada à web desenvolvida pela Google
+ Foi lançada em 2011 com objetivo inicial de substituir o JavaScript como linguagem principal embutida nos navegadores.
+
+ Open Source, orientada a objetos e multi-propósitos
+ Baseada na linguagem C e C++
+ Dart é web e mobile
+ Suporta a interfaces, mixins e classes abstratas
+ 
+https://dart.dev >> documentação
+
+https://dart.dev/language  >> específico sobre a linguagem
+
+https://dartpad.dev/?
+
+A estrutura da programação se desenvolve na função main(), que se deriva da linguagem C
+
+*/
+
+
+
 // 1. Tipos básicos de Variáveis e Concatenação
 
 void main() {
