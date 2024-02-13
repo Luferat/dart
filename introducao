@@ -336,6 +336,229 @@ String agora() {
   return agora.toString();
 }
 
+// 9 >> Variáveis Nullable
+
+// 9.1 Entendendo a aplicação
+
+/* Vamos primeiro pensar em uma situação hipotética para o uso
+ * deste tipo de variável:
+ * Neste mesmo código uma nova mensagem de bem-vindo será exibida
+ * para um cliente.
+ * Para isso, criaremos um parametro com o nome do cliente e outro
+ * parametro que indica se mostra ou não o cliente.
+ *  */
+void main() {
+  saudacoes('Elias', cliente: 'Clóvis', mostrarCliente: true);
+}
+
+void saudacoes(
+  String nome, {
+  bool mostrarAgora = true,
+  bool mostrarCliente = false,
+  String cliente = '',
+}) {
+  print('Saudações do $nome');
+  if (mostrarCliente){
+    print('Seja bem-vindo(a), $cliente');
+  }
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+
+
+// 9.2 >> Refazendo a função usando variáveis nulas
+void main() {
+  saudacoes('Elias', cliente:'Clóvis');
+}
+
+void saudacoes(
+  String nome, {
+  bool mostrarAgora = true,
+  String? cliente,
+}) {
+  print('Saudações do $nome');
+
+  if (cliente != null) {
+    print('Seja bem-vindo(a), $cliente');
+  }
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 9.3 >> Conversão de Variáveis Nullable
+
+// Refazendo a função usando variáveis nulas
+void main() {
+  saudacoes('Elias', cliente:'Clóvis');
+  saudacoes('Elias');
+}
+
+void saudacoes(
+  String nome, {
+  bool mostrarAgora = true,
+  String? cliente,
+}) {
+  
+  
+  print('Saudações do ${nome.toUpperCase()}');
+
+  /* uso do operador Null Aware (??)
+   * se o cliente for nulo, será substituído pelo 
+   * parametro passado 
+   */
+  String c = cliente ?? 'Não informado';
+  print('Seja bem-vindo(a), ${c.toUpperCase()}');
+  
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 9.3.1 >> Outro exemplo
+void main() {
+  saudacoes('Elias', cliente: 'Clóvis');
+  saudacoes('Elias');
+  // outro exemplo de null aware
+  int? numero;
+  int a = numero ?? 0;
+  print(a);
+}
+
+void saudacoes(
+  String nome, {
+  bool mostrarAgora = true,
+  String? cliente,
+}) {
+  print('Saudações do ${nome.toUpperCase()}');
+
+  /* uso do operador Null Aware (??)
+   * se o cliente for nulo, será substituído pelo 
+   * parametro passado 
+   */
+  String c = cliente ?? 'Não informado';
+  print('Seja bem-vindo(a), ${c.toUpperCase()}');
+
+  if (mostrarAgora) {
+    print(agora());
+  }
+}
+
+String agora() {
+  DateTime agora = DateTime.now();
+  return agora.toString();
+}
+
+// 10.  Listas 
+
+void main() {
+	// Exemplo: Lista de nomes
+	List<String> nomes = ["Nicho", "Arrascaeta","Viña", "Varela"];
+
+	// Print da lista de nomes
+	print("Lista de nomes:");
+	print(nomes);
+
+	// Iteração da lista e print de cada nome em maiúsculo
+	print("\nNomes em maiúsculo:");
+	for (String nome in nomes) {
+		print(nome.toUpperCase());
+	}
+}
+
+// 11.  Mapas
+
+void main() {
+	// Exemplo de  mapa com DDDs
+	Map<int, String> ddds = {
+		11: "São Paulo",
+		21: "Rio de Janeiro",
+		31: "Belo Horizonte",
+		41: "Curitiba",
+		51: "Porto Alegre"
+	};
+
+	// Chama a função para imprimir o valor da cidade para um determinado DDD
+	imprimirCidadeDoDDD(11, ddds);
+	imprimirCidadeDoDDD(21, ddds);
+	imprimirCidadeDoDDD(31, ddds);
+	imprimirCidadeDoDDD(41, ddds);
+	imprimirCidadeDoDDD(51, ddds);
+}
+
+void imprimirCidadeDoDDD(int ddd, Map<int, String> ddds) {
+	// Verifica se o DDD está no mapa
+	if (ddds.containsKey(ddd)) {
+		// Imprime a cidade associada ao DDD
+		print("O DDD $ddd corresponde à cidade de ${ddds[ddd]}.");
+	} else {
+		// Imprime uma mensagem se o DDD não estiver no mapa
+		print("DDD não encontrado para $ddd.");
+	}
+}
+
+
+// 12. Uso de JSON no dart, exemplo com dados cadastrais
+
+import 'dart:convert';
+
+void main() {
+	// Criando estrutura JSON com dados do aluno
+	String dadosAlunoJson = '''
+		{
+			"nome": "João Silva",
+			"nascimento": "2000-05-15",
+			"tamanho": 175,
+			"endereco": {
+				"rua": "Rua das Flores",
+				"numero": 123,
+				"bairro": "Centro",
+				"cidade": "São Paulo"
+			}
+		}
+	''';
+
+	// Convertendo o JSON para um mapa (Map<String, dynamic>)
+	Map<String, dynamic> dadosAluno = jsonDecode(dadosAlunoJson);
+
+	// Capturando e imprimindo os dados do aluno
+	String nome = dadosAluno['nome'];
+	String nascimento = dadosAluno['nascimento'];
+	int tamanho = dadosAluno['tamanho'];
+	Map<String, dynamic> endereco = dadosAluno['endereco'];
+	String rua = endereco['rua'];
+	int numero = endereco['numero'];
+	String bairro = endereco['bairro'];
+	String cidade = endereco['cidade'];
+
+	// Imprimindo os dados do aluno
+	print("Nome: $nome");
+	print("Data de Nascimento: $nascimento");
+	print("Tamanho: $tamanho");
+	print("Endereço:");
+	print("Rua: $rua, $numero");
+	print("Bairro: $bairro");
+	print("Cidade: $cidade");
+}
+
+
 
 
 
