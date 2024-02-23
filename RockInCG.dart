@@ -41,8 +41,19 @@ class _HomePageState extends State<HomePage> {
         itemCount: listaAtracoes.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(listaAtracoes[index].nome),
-          );
+              title: Text(listaAtracoes[index].nome),
+              subtitle: Wrap(
+                spacing: 0,
+                runSpacing: 4,
+                children: listaAtracoes[index]
+                    .tags
+                    .map((tag) => Chip(label: Text('#$tag')))
+                    .toList(),
+              ),
+              leading: CircleAvatar(
+                child: Text('${listaAtracoes[index].dia}'),
+              ),
+              trailink: IconButton(onPressed: () {})),
         },
       ),
     );
