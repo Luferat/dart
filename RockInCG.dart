@@ -18,8 +18,7 @@ class RockInCG extends StatelessWidget {
         title: 'Rick in CG',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.indigo),
-        home: const HomePage()
-    );
+        home: const HomePage());
   }
 }
 
@@ -35,18 +34,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Atrações'),
-        ),
+      appBar: AppBar(
+        title: const Text('Atrações'),
+      ),
       body: ListView.builder(
-      itemCount: listaAtracoes.length,
-        itemBuilder: (context, index){
+        itemCount: listaAtracoes.length,
+        itemBuilder: (context, index) {
           return ListTile(
-          title: Text(listaAtracoes[index].nome)
+            title: Text(listaAtracoes[index].nome),
           );
         },
-        ),
-      );
+      ),
+    );
   }
 }
 
@@ -66,7 +65,8 @@ const listaAtracoes = [
   Atracao("Toca na Ferida", 6, ["HotWheels", "Sempre Livre", "Esparadrapo"]),
   Atracao("Jocastiana", 7, ["Balada", "Abalada", "Bala perdida"]),
   Atracao("Sepuldatos", 6, ["Faledido", "Falido", "Fudido"]),
-  Atracao("Escalipinho de Seropédica", 7, ["Dominhoco", "Prequiçoso", "Ocioso"]),
+  Atracao(
+      "Escalipinho de Seropédica", 7, ["Dominhoco", "Prequiçoso", "Ocioso"]),
   Atracao("Batuke do Maluke", 2, ["Sem noção", "Sem razão", "Sem padrão"]),
   Atracao("Serginho da Virada", 3, ["Sequestro", "Estorção", "Mão boba"]),
   Atracao("Banda paraiso", 6, ["Foi", "Já foi", "Ainda indo"]),
